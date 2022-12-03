@@ -3,24 +3,20 @@ import re
 data = open("Data.txt")
 
 basket = []
+elves = []
 triples = []
-count = 0
 
 for line in data:
-    count += 1
-    if count == 1:
-        elf1 = line.strip()
-    elif count == 2:
-        elf2 = line.strip()
-    elif count == 3:
-        count = 0
-        for charater in line.strip():
-            if elf1.find(charater) > -1 and elf2.find(charater) > -1:
+    elves.append(line.strip())
+    if len(elves) == 3:
+        for charater in elves[2]:
+            if elves[0].find(charater) > -1 and elves[1].find(charater) > -1:
                 if re.search('[a-z]', charater):
                     basket.append(ord(charater) - 96)
                 else:
                     basket.append(ord(charater) - 38)
         triples.append(basket[0])
-        basket = []
+        basket = [] # set back to empty state for next run
+        elves = []
 
 print(sum(triples))
