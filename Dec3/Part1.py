@@ -15,7 +15,6 @@ for line in data:
                 basket.append( ord(charater) - 96)
             else:
                 basket.append(ord(charater) - 38)
-    print(basket)
     doubles.append(basket[0])
 
 print(sum(doubles))
